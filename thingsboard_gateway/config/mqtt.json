@@ -7,7 +7,7 @@
     "port":8883,
     "clientId": "gac-gateway",
     "security": {
-      "caCert":"/Users/gongshengwei/workspace/docker/gateway/config/ca-4.pem",
+      "caCert":"/thingsboard_gateway/config/ca-4.pem",
       "username": "kukaatx",
       "password": "!skcus1N"
     }
