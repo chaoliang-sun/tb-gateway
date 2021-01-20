@@ -63,8 +63,8 @@ class JsonMqttUplinkConverter(MqttUplinkConverter):
                     value_tag = TBUtility.get_value(datatype_config["value"], data, datatype_config["type"], get_tag=True)
                     key = TBUtility.get_value(datatype_config["key"], data, datatype_config["type"], expression_instead_none=True)
                     key_tag = TBUtility.get_value(datatype_config["key"], data, get_tag=True)
-                    if ("${" not in str(value) and "}" not in str(value)) \
-                       and ("${" not in str(key) and "}" not in str(key)):
+                    if ("${" not in str(value)) \
+                       and ("${" not in str(key)):
                         is_valid_key = isinstance(key, str) and "${" in datatype_config["key"] and "}" in datatype_config["key"]
                         is_valid_value = isinstance(value, str) and "${" in datatype_config["value"] and "}" in datatype_config["value"]
                         full_key = datatype_config["key"].replace('${' + str(key_tag) + '}', str(key)) if is_valid_key else key_tag

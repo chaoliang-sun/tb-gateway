@@ -33,7 +33,6 @@ ATTRIBUTES_TOPIC_RESPONSE = 'v1/devices/me/attributes/response/'
 TELEMETRY_TOPIC = 'v1/devices/me/telemetry'
 log = logging.getLogger("tb_connection")
 
-
 class TBTimeoutException(Exception):
     pass
 

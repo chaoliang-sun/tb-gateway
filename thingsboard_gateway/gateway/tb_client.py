@@ -54,8 +54,8 @@ class TBClient(threading.Thread):
                                         tls_version=PROTOCOL_TLSv1_2,
                                         cert_reqs=CERT_REQUIRED,
                                         ciphers=None)
-            if self.__ca_cert is not None:
-                self.client._client.tls_insecure_set(False)
+
+            self.client._client.tls_insecure_set(True)
         # if self.__tls and self.__ca_cert is None and self.__private_key is None and self.__cert is None:
             # pylint: disable=protected-access
         # Adding callbacks
