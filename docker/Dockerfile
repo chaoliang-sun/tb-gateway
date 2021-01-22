@@ -14,7 +14,7 @@ echo "nameserver 8.8.8.8" >> /etc/resolv.conf\n\
 \n\
 python ./thingsboard_gateway/tb_gateway.py\n\
 '\
->> start-gateway.sh && chmod +x start-gateway.sh
+>> start-gateway.sh && chmod +x start-gateway.sh && chmod +x /docker/docker-entrypoint.sh:
 ENV PATH="/root/.local/bin:$PATH"
 ENV configs /thingsboard_gateway/config
 ENV extensions /thingsboard_gateway/extensions
