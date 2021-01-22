@@ -1,11 +1,11 @@
 thingsboard:
-  host: digital-dev.kukaplus.com
-  port: 32534
+  host: "${TB_HOST}"
+  port: "${TB_PORT}"
   remoteShell: false
   remoteConfiguration: false
   security:
-#    caCert: "/Users/gongshengwei/workspace/docker/gateway/gtcfg/certificate.pem"
-    accessToken: lR1MkxXoSJzOCRhSnUwI
+    caCert: "${TB_CREDENTIALS}"
+    accessToken: "${GATEWAY_TOKEN}"
   qos: 1
 storage:
   type: memory
@@ -20,5 +20,5 @@ connectors:
   -
     name: MQTT Broker Connector
     type: mqtt
-    configuration: mqtt.json
+    configuration: "${CONFIG_FILE}"
 

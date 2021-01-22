@@ -1,20 +1,18 @@
-
-
 {
   "broker": {
     "name":"CB-BROKER",
-    "host":"mqtt.connect.kuka-robotics.cn",
-    "port":8883,
-    "clientId": "gac-gateway",
+    "host":"${IB_HOST}",
+    "port":"${IB_PORT}",
+    "clientId": "${GATEWAY_CLIENT_ID}",
     "security": {
-      "caCert":"/thingsboard_gateway/config/ca-4.pem",
-      "username": "kukaatx",
-      "password": "!skcus1N"
+      "caCert":"${CA_PATH}",
+      "username": "${CB_USERNAME}",
+      "password": "${CB_PASSWORD}"
     }
   },
   "mapping": [
     {
-      "topicFilter": "sites/gac/ghz/devices/+/operational-data",
+      "topicFilter": "${TOPIC_PREFIX}/devices/${DEVICE_PATTEN}/operational-data",
       "converter": {
         "type": "json",
         "deviceNameTopicExpression": "(?<=devices\/)(.*?)(?=\/operational-data)",
@@ -23,12 +21,63 @@
         "timeseries": [
           {
             "type": "json",
-            "key": "opdata",
+            "key": "CYCLEANALYTICS",
             "value": "${CYCLEANALYTICS}"
+          }
+        ]
+      }
+    }
+  ,
+    {
+      "topicFilter": "${TOPIC_PREFIX}/devices/${DEVICE_PATTEN}/system-messages",
+      "converter": {
+        "type": "json",
+        "deviceNameTopicExpression": "(?<=devices\/)(.*?)(?=\/system-messages)",
+        "deviceTypeTopicExpression": "default",
+        "timeout": 60000,
+        "timeseries": [
+          {
+            "type": "json",
+            "key": "MESSAGES",
+            "value": "${MESSAGES}"
           }
         ]
 
       }
-    }]
+    },
+    {
+      "topicFilter": "${TOPIC_PREFIX}/devices/${DEVICE_PATTEN}/winload",
+      "converter": {
+        "type": "json",
+        "deviceNameTopicExpression": "(?<=devices\/)(.*?)(?=\/winload)",
+        "deviceTypeTopicExpression": "default",
+        "timeout": 60000,
+        "timeseries": [
+          {
+            "type": "json",
+            "key": "WINLOAD",
+            "value": "${WINLOAD}"
+          }
+        ]
+
+      }
+    },
+    {
+      "topicFilter": "${TOPIC_PREFIX}/devices/${DEVICE_PATTEN}/device-metadata",
+      "converter": {
+        "type": "json",
+        "deviceNameTopicExpression": "(?<=devices\/)(.*?)(?=\/device-metadata)",
+        "deviceTypeTopicExpression": "default",
+        "timeout": 60000,
+        "timeseries": [
+          {
+            "type": "json",
+            "key": "ASSET",
+            "value": "${ASSET}"
+          }
+        ]
+      }
+    }
+  ]
 
 }
