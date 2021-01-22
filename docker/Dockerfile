@@ -30,7 +30,7 @@ ENV DEVICE_PATTEN "+"
 RUN chmod a+x /docker/docker-entrypoint.sh
 RUN apt-get update && apt-get install gcc -y
 RUN pip3 install importlib_metadata --user
-RUN python /setup.py install && mkdir -p /default-config/config /default-config/extensions/ && cp -r /thingsboard_gateway/config/* /default-config/config/ && cp -r /thingsboard_gateway/extensions/* /default-config/extensions
+RUN python /setup.py install
 VOLUME ["${configs}", "${extensions}", "${logs}"]
 ENTRYPOINT ["/docker/docker-entrypoint.sh"]
 CMD [ "/bin/sh", "./start-gateway.sh" ]
