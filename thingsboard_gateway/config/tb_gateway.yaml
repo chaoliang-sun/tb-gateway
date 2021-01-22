@@ -1,6 +1,6 @@
 thingsboard:
   host: "${TB_HOST}"
-  port: "${TB_PORT}"
+  port: ${TB_PORT}
   remoteShell: false
   remoteConfiguration: false
   security:
