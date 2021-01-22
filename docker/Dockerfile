@@ -14,7 +14,7 @@ echo "nameserver 8.8.8.8" >> /etc/resolv.conf\n\
 \n\
 python ./thingsboard_gateway/tb_gateway.py\n\
 '\
->> start-gateway.sh && chmod +x start-gateway.sh && chmod +x /docker/docker-entrypoint.sh:
+>> start-gateway.sh && chmod +x start-gateway.sh
 ENV PATH="/root/.local/bin:$PATH"
 ENV configs /thingsboard_gateway/config
 ENV extensions /thingsboard_gateway/extensions
@@ -27,6 +27,7 @@ ENV CA_PATH "${configs}/cb-ca.pem"
 ENV CB_USERNAME kukaatx
 ENV CB_PASSWORD !skcus1N
 ENV DEVICE_PATTEN "+"
+RUN chmod a+x /docker/docker-entrypoint.sh
 RUN apt-get update && apt-get install gcc -y
 RUN pip3 install importlib_metadata --user
 RUN python /setup.py install && mkdir -p /default-config/config /default-config/extensions/ && cp -r /thingsboard_gateway/config/* /default-config/config/ && cp -r /thingsboard_gateway/extensions/* /default-config/extensions
