@@ -31,5 +31,5 @@ RUN apt-get update && apt-get install gcc -y
 RUN pip3 install importlib_metadata --user
 RUN python /setup.py install && mkdir -p /default-config/config /default-config/extensions/ && cp -r /thingsboard_gateway/config/* /default-config/config/ && cp -r /thingsboard_gateway/extensions/* /default-config/extensions
 VOLUME ["${configs}", "${extensions}", "${logs}"]
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/docker/docker-entrypoint.sh"]
 CMD [ "/bin/sh", "./start-gateway.sh" ]

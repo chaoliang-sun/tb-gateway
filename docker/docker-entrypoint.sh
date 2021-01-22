@@ -8,12 +8,12 @@ if [[ $TB_PORT ]]; then
 fi
 sed  's/\$\{TB_CREDENTIALS\}/'"$TB_CREDENTIALS"'/g' "$configs"/tb_gateway.yaml
 sed   's/\$\{GATEWAY_TOKEN\}/'"$GATEWAY_TOKEN"'/g' "$configs"/tb_gateway.yaml
-sed   's/\$\{CONFIG_FILE\}/'"$GATEWAY_TOKEN"'/g' "$configs"/tb_gateway.yaml
+sed   's/\$\{CONFIG_FILE\}/'"$CONFIG_FILE"'/g' "$configs"/tb_gateway.yaml
 
 #change mqtt.file
 cat "$configs"/tb_gateway.yaml
-sed  's/\$\{IB_HOST\}/'"$IB_HOST"'/g' "$configs/$CONFIG_FILE"
-sed  's/\$\{IB_PORT\}/'"$IB_PORT"'/g' "$configs/$CONFIG_FILE"
+sed  's/\$\{CB_HOST\}/'"CB_HOST"'/g' "$configs/$CONFIG_FILE"
+sed  's/\$\{CB_PORT\}/'"CB_PORT"'/g' "$configs/$CONFIG_FILE"
 sed  's/\$\{GATEWAY_CLIENT_ID\}/'"$GATEWAY_CLIENT_ID"'/g' "$configs/$CONFIG_FILE"
 sed  's/\$\{CA_PATH\}/'"$CA_PATH"'/g' "$configs/$CONFIG_FILE"
 sed  's/\$\{CB_USERNAME\}/'"$CB_USERNAME"'/g' "$configs/$CONFIG_FILE"
