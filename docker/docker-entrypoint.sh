@@ -3,7 +3,7 @@
 
 sed  -i 's/${TB_HOST}/'"$TB_HOST"'/g' "$configs"/tb_gateway.yaml
 
-sed  -i 's/${TB_PORT}/'"$TB_PORT"'/g' "$configs"/tb_gateway.yaml
+sed  -i 's/${TB_PORT}/'$TB_PORT'/g' "$configs"/tb_gateway.yaml
 
 if [[ $TB_CREDENTIALS ]]; then
   sed  -i 's/${TB_CREDENTIALS}/'"$TB_CREDENTIALS"'/g' "$configs"/tb_gateway.yaml
@@ -20,7 +20,7 @@ cat "$configs"/tb_gateway.yaml
 
 
 sed -i 's/${CB_HOST}/'"$CB_HOST"'/g' "$configs/$CONFIG_FILE"
-sed -i 's/${CB_PORT}/'"$CB_PORT"'/g' "$configs/$CONFIG_FILE"
+sed -i 's/${CB_PORT}/'$CB_PORT'/g' "$configs/$CONFIG_FILE"
 sed -i 's/${GATEWAY_CLIENT_ID}/'"$GATEWAY_CLIENT_ID"'/g' "$configs/$CONFIG_FILE"
 sed -i 's/${CA_PATH\}/'"$CA_PATH"'/g' "$configs/$CONFIG_FILE"
 sed -i 's/${CB_USERNAME}/'"$CB_USERNAME"'/g' "$configs/$CONFIG_FILE"
