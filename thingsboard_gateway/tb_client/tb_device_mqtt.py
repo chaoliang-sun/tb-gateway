@@ -163,6 +163,7 @@ class TBDeviceMqttClient:
                 self._client.tls_insecure_set(False)
             except ValueError:
                 pass
+        log.info("connect =======> host  %s:%s", self.__host, self.__port)
         self._client.connect(self.__host, self.__port, keepalive=keepalive)
         self.reconnect_delay_set(min_reconnect_delay, timeout)
         self._client.loop_start()
