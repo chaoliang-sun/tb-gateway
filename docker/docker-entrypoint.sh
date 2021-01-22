@@ -5,7 +5,11 @@ sed  -i 's/${TB_HOST}/'"$TB_HOST"'/g' "$configs"/tb_gateway.yaml
 
 sed  -i 's/${TB_PORT}/'"$TB_PORT"'/g' "$configs"/tb_gateway.yaml
 
-sed  -i 's/${TB_CREDENTIALS}/'"$TB_CREDENTIALS"'/g' "$configs"/tb_gateway.yaml
+if [[ $TB_CREDENTIALS ]]; then
+  sed  -i 's/${TB_CREDENTIALS}/'"$TB_CREDENTIALS"'/g' "$configs"/tb_gateway.yaml
+else
+  sed  -i '/${TB_CREDENTIALS}/d' "$configs"/tb_gateway.yaml
+fi
 sed   -i 's/${GATEWAY_TOKEN\}/'"$GATEWAY_TOKEN"'/g' "$configs"/tb_gateway.yaml
 sed  -i 's/${CONFIG_FILE\}/'"$CONFIG_FILE"'/g' "$configs"/tb_gateway.yaml
 echo --------------show gateway config -------------------------------------
