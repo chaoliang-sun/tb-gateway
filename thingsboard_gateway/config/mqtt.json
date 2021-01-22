@@ -1,8 +1,8 @@
 {
   "broker": {
     "name":"CB-BROKER",
-    "host":${CB_HOST},
-    "port":"${CB_PORT}",
+    "host":"${CB_HOST}",
+    "port":${CB_PORT},
     "clientId": "${GATEWAY_CLIENT_ID}",
     "security": {
       "caCert":"${CA_PATH}",
