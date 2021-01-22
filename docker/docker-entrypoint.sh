@@ -22,7 +22,7 @@ cat "$configs"/tb_gateway.yaml
 sed -i 's/${CB_HOST}/'"$CB_HOST"'/g' "$configs/$CONFIG_FILE"
 sed -i 's/${CB_PORT}/'$CB_PORT'/g' "$configs/$CONFIG_FILE"
 sed -i 's/${GATEWAY_CLIENT_ID}/'"$GATEWAY_CLIENT_ID"'/g' "$configs/$CONFIG_FILE"
-sed -i 's/${CA_PATH\}/'"$CA_PATH"'/g' "$configs/$CONFIG_FILE"
+sed -i 's!${CA_PATH}!'$CA_PATH'!g' "$configs/$CONFIG_FILE"
 sed -i 's/${CB_USERNAME}/'"$CB_USERNAME"'/g' "$configs/$CONFIG_FILE"
 sed -i 's/${CB_PASSWORD}/'"$CB_PASSWORD"'/g' "$configs/$CONFIG_FILE"
 sed -i 's!${TOPIC_PREFIX}!'"$TOPIC_PREFIX"'!g' "$configs/$CONFIG_FILE"
