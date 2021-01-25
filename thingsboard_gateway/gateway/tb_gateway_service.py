@@ -141,8 +141,8 @@ class TBGatewayService:
                 if not self.tb_client.is_connected() and self.__subscribed_to_rpc_topics:
                     self.__subscribed_to_rpc_topics = False
                 if self.tb_client.is_connected() and not self.__subscribed_to_rpc_topics:
-                    for device in self.__saved_devices:
-                        self.add_device(device, {"connector": self.__saved_devices[device]["connector"]}, True, device_type=self.__saved_devices[device]["device_type"])
+                    # for device in self.__saved_devices:
+                    #     self.add_device(device, {"connector": self.__saved_devices[device]["connector"]}, True, device_type=self.__saved_devices[device]["device_type"])
                     self.subscribe_to_required_topics()
                     self.__subscribed_to_rpc_topics = True
                 if self.__sheduled_rpc_calls:
