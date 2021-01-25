@@ -645,19 +645,20 @@ class TBGatewayService:
 
     def get_devices(self):
         return self.__connected_devices
-
+#加载历史设备有bug把文件置空
     def __load_persistent_devices(self):
         devices = {}
-        if self.__connected_devices_file in listdir(self._config_dir) and \
-                path.getsize(self._config_dir + self.__connected_devices_file) > 0:
-            try:
-                with open(self._config_dir + self.__connected_devices_file) as devices_file:
-                    devices = load(devices_file)
-            except Exception as e:
-                log.exception(e)
-        else:
-            connected_devices_file = open(self._config_dir + self.__connected_devices_file, 'w')
-            connected_devices_file.close()
+        # if self.__connected_devices_file in listdir(self._config_dir) and \
+        #         path.getsize(self._config_dir + self.__connected_devices_file) > 0:
+        #     try:
+        #         with open(self._config_dir + self.__connected_devices_file) as devices_file:
+        #             devices = load(devices_file)
+        #     except Exception as e:
+        #         log.exception(e)
+        # else:
+        connected_devices_file = open(self._config_dir + self.__connected_devices_file, 'w')
+        connected_devices_file.write("")
+        connected_devices_file.close()
 
         if devices is not None:
             log.debug("Loaded devices:\n %s", devices)
