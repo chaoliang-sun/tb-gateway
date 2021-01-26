@@ -31,8 +31,6 @@ sed -i 's!${DEVICE_PATTEN}!'"$DEVICE_PATTEN"'!g' "$configs/$CONFIG_FILE"
 mkdir -p /default-config/config /default-config/extensions/ && cp -r /thingsboard_gateway/config/* /default-config/config/ && cp -r /thingsboard_gateway/extensions/* /default-config/extensions
 
 echo -----------------show mqtt config -------------------------------------
-echo -----------------show mqtt config -------------------------------------
-echo -----------------show mqtt config -------------------------------------
 cat "$configs/$CONFIG_FILE"
 
 exec "$@"
