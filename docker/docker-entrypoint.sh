@@ -13,7 +13,6 @@ fi
 sed   -i 's/${GATEWAY_TOKEN\}/'"$GATEWAY_TOKEN"'/g' "$configs"/tb_gateway.yaml
 sed  -i 's/${CONFIG_FILE\}/'"$CONFIG_FILE"'/g' "$configs"/tb_gateway.yaml
 echo --------------show gateway config -------------------------------------
-echo --------------show gateway config -------------------------------------
 cat "$configs"/tb_gateway.yaml
 
 #change mqtt.file
