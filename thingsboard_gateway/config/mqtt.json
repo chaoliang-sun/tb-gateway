@@ -1,18 +1,18 @@
 {
   "broker": {
     "name":"CB-BROKER",
-    "host":"${CB_HOST}",
-    "port":${CB_PORT},
-    "clientId": "${GATEWAY_CLIENT_ID}",
+    "host":"mqtt.connect.kuka-robotics.cn",
+    "port": 8883,
+    "clientId": "gac-gateway",
     "security": {
-      "caCert":"${CA_PATH}",
-      "username": "${CB_USERNAME}",
-      "password": "${CB_PASSWORD}"
+      "caCert":"/Users/chaoliang/IdeaProjects/999/ktb-gateway/thingsboard_gateway/config/cb-ca.pem",
+      "username": "kukaatx",
+      "password": "!skcus1N"
     }
   },
   "mapping": [
     {
-      "topicFilter": "${TOPIC_PREFIX}/devices/${DEVICE_PATTEN}/operational-data",
+      "topicFilter": "sites/gac/ghz/devices/+/operational-data",
       "converter": {
         "type": "json",
         "deviceNameTopicExpression": "(?<=devices\/)(.*?)(?=\/operational-data)",
@@ -29,7 +29,7 @@
     }
   ,
     {
-      "topicFilter": "${TOPIC_PREFIX}/devices/${DEVICE_PATTEN}/system-messages",
+      "topicFilter": "sites/gac/ghz/devices/+/system-messages",
       "converter": {
         "type": "json",
         "deviceNameTopicExpression": "(?<=devices\/)(.*?)(?=\/system-messages)",
@@ -46,7 +46,7 @@
       }
     },
     {
-      "topicFilter": "${TOPIC_PREFIX}/devices/${DEVICE_PATTEN}/winload",
+      "topicFilter": "sites/gac/ghz/devices/+/winload",
       "converter": {
         "type": "json",
         "deviceNameTopicExpression": "(?<=devices\/)(.*?)(?=\/winload)",
@@ -63,7 +63,7 @@
       }
     },
     {
-      "topicFilter": "${TOPIC_PREFIX}/devices/${DEVICE_PATTEN}/device-metadata",
+      "topicFilter": "sites/gac/ghz/devices/+/device-metadata",
       "converter": {
         "type": "json",
         "deviceNameTopicExpression": "(?<=devices\/)(.*?)(?=\/device-metadata)",

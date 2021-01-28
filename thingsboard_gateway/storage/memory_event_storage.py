@@ -23,12 +23,14 @@ class MemoryEventStorage(EventStorage):
         self.__events_per_time = config.get("read_records_count", 1000)
         self.__events_queue = Queue(self.__queue_len)
         self.__event_pack = []
-        log.debug("Memory storage created with following configuration: \nMax size: %i\n Read records per time: %i", self.__queue_len, self.__events_per_time)
+        log.info("Memory storage created with following configuration: \nMax size: %i\n Read records per time: %i", self.__queue_len, self.__events_per_time)
 
     def put(self, event):
         success = False
         try:
             self.__events_queue.put(event)
+            #if (self.__events_queue.qsize() > 100):
+            log.info("event queue %i size:%i", self.__events_queue.__hash__(),self.__events_queue.qsize())
             success = True
         except Full:
             log.error("Memory storage is full!")

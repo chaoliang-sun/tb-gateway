@@ -1,12 +1,18 @@
 thingsboard:
-  host: "${TB_HOST}"
-  port: ${TB_PORT}
+  #host: "${TB_HOST}"
+  #port: ${TB_PORT}
+  #host: 52.82.110.11
+  #port: 32534
+  host: localhost
+  port: 1883
   remoteShell: false
   remoteConfiguration: false
   security:
-    caCert: "${TB_CREDENTIALS}"
-    accessToken: "${GATEWAY_TOKEN}"
-  qos: 1
+    #caCert: "${TB_CREDENTIALS}"
+    #accessToken: "${GATEWAY_TOKEN}"
+    accessToken: Ns6ineFDO4uaRTomkkzl
+    #accessToken: lR1MkxXoSJzOCRhSnUwI
+  qos: 0
 storage:
   type: memory
   read_records_count: 100
@@ -20,5 +26,6 @@ connectors:
   -
     name: MQTT Broker Connector
     type: mqtt
-    configuration: "${CONFIG_FILE}"
+    #configuration: "${CONFIG_FILE}"
+    configuration: mqtt.json
 

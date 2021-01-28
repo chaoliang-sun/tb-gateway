@@ -401,7 +401,7 @@ class TBGatewayService:
                             if not self.tb_client.is_connected():
                                 continue
                             while self.__rpc_reply_sent:
-                                sleep(.01)
+                                sleep(.000)
                             self.__send_data(devices_data_in_event_pack)
                         if self.tb_client.is_connected() and (self.__remote_configurator is None or not self.__remote_configurator.in_process):
                             success = True
@@ -424,7 +424,7 @@ class TBGatewayService:
                                 except Exception as e:
                                     log.exception(e)
                                     success = False
-                                sleep(.01)
+                                #sleep(.002)
                             if success:
                                 self._event_storage.event_pack_processing_done()
                                 del devices_data_in_event_pack
@@ -432,12 +432,12 @@ class TBGatewayService:
                         else:
                             continue
                     else:
-                        sleep(.01)
+                        sleep(.000)
                 else:
                     sleep(.1)
             except Exception as e:
                 log.exception(e)
-                sleep(1)
+                sleep(.002)
 
     def __send_data(self, devices_data_in_event_pack):
         try:

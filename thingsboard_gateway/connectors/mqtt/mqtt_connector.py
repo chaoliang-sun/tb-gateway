@@ -326,6 +326,7 @@ class MqttConnector(Connector, Thread):
     def _on_message(self, client, userdata, message):
         self.statistics['MessagesReceived'] += 1
         content = TBUtility.decode(message)
+        #self.__log.info("chaoliang:_on_message:%i-----------%s", self.statistics['MessagesReceived'], content)
 
         # Check if message topic exists in mappings "i.e., I'm posting telemetry/attributes" ---------------------------
         topic_handlers = [regex for regex in self.__mapping_sub_topics if fullmatch(regex, message.topic)]
@@ -345,6 +346,9 @@ class MqttConnector(Connector, Thread):
 
                         if converted_content:
                             request_handled = True
+                            #self.__log.info("%s", converted_content["deviceName"])
+                            #self.__log.info("%s", content)
+                            #if converted_content["deviceName"].startswith('566'):
                             self.__gateway.send_to_storage(self.name, converted_content)
                             self.statistics['MessagesSent'] += 1
                             self.__log.debug("Successfully converted message from topic %s", message.topic)
