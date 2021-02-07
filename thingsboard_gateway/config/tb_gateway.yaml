@@ -4,7 +4,7 @@ thingsboard:
   #host: 52.82.110.11
   #port: 32534
   host: localhost
-  port: 1883
+  port: 8883
   remoteShell: false
   remoteConfiguration: false
   security:
